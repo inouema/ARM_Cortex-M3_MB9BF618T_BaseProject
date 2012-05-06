@@ -13,7 +13,7 @@
 /*
  * AAAAA
  */
-//#define USE_UART_MALLOC
+#define USE_UART_MALLOC
 
 
 /*

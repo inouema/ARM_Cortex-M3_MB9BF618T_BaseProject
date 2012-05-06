@@ -2,8 +2,8 @@
 /*!
 	@file			main.c
 	@author         Nemui Trinomius (http://nemuisan.blog.bai.ne.jp)
-    @version        1.00
-    @date           2012.04.01
+	@version        1.00
+	@date           2012.04.01
 	@brief          KickStart program For MB9BF618T JunkBoard!			@n
 
     @section HISTORY
@@ -45,10 +45,10 @@ int main(void)
 	SysTickInit(INTERVAL);
 
 	/* Initialize GPIO for the LED. */
-	FM3_GPIO->PDORF_f.P3 	=0;		/* Set Clr(at first)*/
-	FM3_GPIO->PFRF_f.P3 	=0;		/* Use PF3 as GPIO	*/
-	FM3_GPIO->DDRF_f.P3 	=1;		/* Mode Output	  	*/
-	FM3_GPIO->PZRF_f.P3 	=1;		/* Port Tristate  	*/
+	FM3_GPIO->PDORF_f.P3 = 0;		/* Set Clr(at first)*/
+	FM3_GPIO->PFRF_f.P3  = 0;		/* Use PF3 as GPIO	*/
+	FM3_GPIO->DDRF_f.P3  = 1;		/* Mode Output	  	*/
+	FM3_GPIO->PZRF_f.P3  = 1;		/* Port Tristate  	*/
 
 	/* Initialize UART */
 	UartInit();

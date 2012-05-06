@@ -13,11 +13,10 @@ MEMORY
 }
 
 /* higher address of the user mode stack */
-_estack = ORIGIN(RAM0)+LENGTH(RAM0);
+_estack = ORIGIN(RAM1)+LENGTH(RAM1);
 
 
 /* Sections Definitions */
-
 SECTIONS
 {
     /* for Cortex devices, the beginning of the startup code is stored in the 
@@ -141,7 +140,8 @@ SECTIONS
     } > RAM1
     __bss_end__ = . ;
     PROVIDE (__bss_end = .);
-    /* This is the heap section used malloc */
+
+	/* This is the heap section used malloc */
 	.heap (NOLOAD) :
 	{
 		_end = . ;
@@ -157,9 +157,23 @@ SECTIONS
 	_heap_end = . ;
 	PROVIDE (_heap_end = .);
 
+	/* .stack section which is used for auto variable */
+	.stack (NOLOAD) : 
+	{
+		_stack_top = . ;
+		PROVIDE (_stack_top = .);
+		*(.stack .stack.*)
+		*(.STACK)
+		_stack = . ;
+		PROVIDE (_stack = .);
+		/*. = ALIGN(8);*/
+		. = ALIGN(4);
+	} > RAM1
+	_stack_end = _estack;
+	PROVIDE (_stack_end = _estack);
+
 
 	/* after that it's only debugging information. */
-
 	/* remove the debugging information from the standard libraries */
 	/DISCARD/ :
 	{

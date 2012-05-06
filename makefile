@@ -88,8 +88,6 @@ DEFZ = $(SUBMODEL)   $(EVAL_BOARD)   $(MPU_DENSITY)  $(PERIF_DRIVER)    $(VECTOR
 DEFZ += $(USE_DISPLAY) $(USE_FONTSIZE) $(USE_KANJI) $(USE_TOUCH_SENCE)  $(USE_XMSTN)		\
         $(USE_JPEG_LIB) $(USE_PNG_LIB)
 
-#define USE UART
-DEFZ += USE_CH03
 
 SYNTHESIS_DEFS	= $(addprefix -D,$(DEFZ)) 							\
 				 -DPACK_STRUCT_END=__attribute\(\(packed\)\) 		\
@@ -186,6 +184,9 @@ CFILES += \
  $(PPD_MFS_UART)/UartDev_FM3.c	\
  $(PPD_MFS_I2C)/I2cDev_FM3.c	\
  $(PPD_MFS_SIO)/SioDev_FM3.c
+
+# If you use ch4 to ch7 of UART, please comment it.
+DEFZ += USE_CH03
 
 
 
